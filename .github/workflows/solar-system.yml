@@ -76,6 +76,8 @@
          tags: ghcr.io/${{ steps.lower.outputs.repo }}/solar-system:${{ github.sha }} 
     dev-deploy:
       runs-on: ubuntu-latest
+      environment:
+        name: development
       needs: docker
       steps:
         - name: Install helm
@@ -94,4 +96,5 @@
             echo "kubectl returned $?"
             kubectl -n default get pod
             sleep 10
+
 
